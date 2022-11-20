@@ -2,6 +2,7 @@ package com.smallblog.blog.services;
 
 
 import com.smallblog.blog.entity.Post;
+import com.smallblog.blog.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,11 @@ public class PostService {
         if(post.getId()== null){
             post.setCreatedAt(LocalDateTime.now());
         }
+        post.setUpdatedAt(LocalDateTime.now());
         return repository.save(post);
+    }
+
+    public void delete(Post post){
+        repository.delete(post);
     }
 }

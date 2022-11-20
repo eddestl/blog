@@ -2,7 +2,6 @@ package com.smallblog.blog.controller;
 
 
 import com.smallblog.blog.entity.Account;
-import com.smallblog.blog.services.AccountRepository;
 import com.smallblog.blog.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

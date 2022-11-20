@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BLOG :: EDIT POST</title>
+</head>
+<body>
+
+<div class="container">
+    <a th:href="@{/home}">HOME</a>
+    <form action="#"
+          th:action="@{'/posts/{id}'(id=${post.id})}"
+          th:object="${post}"
+          method="POST">
+        <input type="hidden" th:field="*{account}" />
+        <input type="hidden" th:field="*{createdAt}" />
+        <h2 class="text-center">Write new post</h2>
+        <div>
+            <label for="new-post-title">Title</label>
+            <input id="new-post-title" type="text" th:field="*{title}" placeholder="Title" />
+        </div>
+        <div>
+            <label for="new-post-text">Body</label>
+            <input id="new-post-text" type="text" th:field="*{text}" placeholder="Body" />
+        </div>
+        <button type="submit">Publish Post</button>
+    </form>
+</div>
+
+</body>
+</html>

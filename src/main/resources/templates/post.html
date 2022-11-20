@@ -1,5 +1,7 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -13,9 +15,15 @@
     <div class="post">
         <h2 th:text="${post.title}">Title</h2>
         <h5 th:text="'Written by: ' + ${post.account.firstName}">Account First Name</h5>
-        <h5 th:text="${post.createdAt}">Created At</h5>
+        <h5 th:text="'Created: ' + ${post.createdAt}">Created At</h5>
+        <h5 th:text="'Updated: ' + ${post.updatedAt}">Updated At</h5>
         <p th:text="${post.text}">Text</p>
     </div>
+
+    <ul sec:authorize="isAuthenticated()">
+        <li><a th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit</a></li>
+        <li><a th:href="@{'/posts/' + ${post.id} +'/delete'}">Delete</a></li>
+    </ul>
 </div>
 
 </body>
