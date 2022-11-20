@@ -4,6 +4,7 @@ practicing some of the things I've learned during the year by building a blog ap
 
 Java
 Html
-Thymeleaf
 Spring MVC
 Spring Security
+Thymeleaf
+Bootstrap
