@@ -1,10 +1,16 @@
 package com.smallblog.blog.entity;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
+@Setter
+@Getter
 public class Post {
 
     @Id
@@ -13,9 +19,10 @@ public class Post {
     private String title;
     private String text;
     private LocalDateTime createdAt;
+    @NotNull
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User creator;
+    @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
+    private Account account;
 
     public Post(Long id, String title, String text, LocalDateTime createdAt) {
         this.id = id;
@@ -27,35 +34,4 @@ public class Post {
     public Post() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
 }

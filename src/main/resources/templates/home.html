@@ -16,16 +16,25 @@
 <div class="container">
     <h1>BLOG APPLICATION</h1>
     <hr/>
+    <ul>
+        <li><a th:href="@{/posts/new}">Create a new post</a></li>
+    </ul>
     <div class="post-container">
         <div class="post" th:each="post : ${posts}">
             <h2><a th:href="@{'/posts/' + ${post.id}}"
                     th:text="${post.title}">Title</a>
             </h2>
+            <h5 th:text="'Written by: ' + ${post.account.firstName}">Account First Name</h5>
             <h5 th:text="'published on: ' + ${post.createdAt}">Created At</h5>
             <p th:text="${post.text}">Body text</p>
             <br/>
         </div>
     </div>
+    <hr />
+    <ul>
+        <li><a th:href="@{/register}">Register</a></li>
+        <li><a th:href="@{/login}">Login</a></li>
+    </ul>
 
 </div>
 
